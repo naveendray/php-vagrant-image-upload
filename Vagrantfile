@@ -16,7 +16,8 @@
     config.vm.define "node" do |node|
         node.vm.provision "shell", inline: "sudo apt-get update && yes | sudo apt-get install apache2"
         node.vm.provision "shell", inline: "yes | sudo apt-get install php libapache2-mod-php" 
-        node.vm.synced_folder "/Users/yasithaherath/Documents/DevOps/php/upload-images", "/var/www/html/upload-images/", create: true
+        node.vm.provision "shell", inline: "git clone https://github.com/naveendray/php-vagrant-image-upload.git" 
+        node.vm.provision "shell", inline: "mv /home/vagrant/php-vagrant-image-upload/upload-images /var/www/html/upload-images" 
         node.vm.hostname = "phpvm"
         node.vm.network "private_network", ip: "192.168.56.151"
         node.vm.network "forwarded_port", guest: 80, host: 8500
