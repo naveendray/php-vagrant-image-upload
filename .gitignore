@@ -1,0 +1,5 @@
+.DS_Store
+.vagrant
+*.log
+upload-images/upload
+id_rsa.pub
